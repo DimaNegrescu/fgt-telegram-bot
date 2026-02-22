@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: fgt
+  mail:
+    host: smtp.gmail.com
+    port: 587
+
+    protocol: smtp
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+  logging:
+    level:
+      org.springframework.mail: DEBUG
+  telegram:
+    operator-chat-id: 603822272
