@@ -31,6 +31,6 @@ public class TravelBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotToken() {
-        return "";
+        return " satu";
     }
 }
