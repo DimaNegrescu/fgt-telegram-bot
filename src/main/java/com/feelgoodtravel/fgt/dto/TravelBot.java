@@ -1,8 +1,6 @@
 package com.feelgoodtravel.fgt.dto;
 
 import com.feelgoodtravel.fgt.service.ConversationService;
-import com.feelgoodtravel.fgt.util.BotMessageSender;
-import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
