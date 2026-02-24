@@ -14,13 +14,17 @@ public class ConversationService {
 
     private final LeadService leadService;
     private final BotMessageSender sender;
-    private final NotificationService notificationService;
+    private final LeadFinalizer leadFinalizer;
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
-    public ConversationService(LeadService leadService, BotMessageSender sender, NotificationService notificationService) {
+    public ConversationService(
+            LeadService leadService,
+            BotMessageSender sender,
+            LeadFinalizer leadFinalizer
+    ) {
         this.leadService = leadService;
         this.sender = sender;
-        this.notificationService = notificationService;
+        this.leadFinalizer = leadFinalizer;
     }
 
     public void handle(Long chatId, String text) {
@@ -98,7 +102,7 @@ public class ConversationService {
                 lead.setContact(text);
                 lead.setState(ConversationState.DONE);
                 leadService.save(lead);
-                notificationService.notifyNewLead(lead);
+                leadFinalizer.finalizeLead(lead);
                 sender.send(chatId, "Mulțumim! Revenim cu ofertă în max. 24h.");
             }
 
